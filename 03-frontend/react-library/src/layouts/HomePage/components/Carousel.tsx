@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { ReturnBook } from "./ReturnBook";
 import { BookModel } from "../../../models/BookModel";
-import { error } from "console";
 import { SpinnerLoading } from "../../Utils/SpinnerLoading";
 
 export const Carousel = () => {
@@ -14,7 +13,7 @@ export const Carousel = () => {
     useEffect(() => {
 
         const fetchBooks = async () => {
-            const baseUrl: string = "http://localhost:8080/api/books";
+            const baseUrl: string = "http://localhost:8081/api/books";
             const url: string = `${baseUrl}?page=0&size=9`;
             const response = await fetch(url);
 
