@@ -26,7 +26,8 @@ export const SearchBooksPage = () => {
             if (searchUrl === '') {
                 url = `${baseUrl}?page=${currentPage - 1}&size=${booksPerPage}`;
             } else {
-                url = baseUrl + searchUrl;
+                let searchWithPage = searchUrl.replace('<pageNumber>', `${currentPage - 1}`);
+                url = baseUrl + searchWithPage;
             }
 
             const response = await fetch(url);
@@ -83,15 +84,16 @@ export const SearchBooksPage = () => {
     }
 
     const searchHandleChange = () => {
+        setCurrentPage(1);
         if (search === '') {
             setSearchUrl('');
         } else {
-            setSearchUrl(`/search/findByTitleContaining?title=${search}&page=0&size=${booksPerPage}`)
+            setSearchUrl(`/search/findByTitleContaining?title=${search}&page=<pageNumber>&size=${booksPerPage}`)
         }
     }
 
     const categoryField = (value: string) => {
-
+        setCurrentPage(1);
         const categoryMap = new Map<string, string>();
         categoryMap.set('Frontend', 'fe');
         categoryMap.set('Backend', 'be');
@@ -100,9 +102,9 @@ export const SearchBooksPage = () => {
         categoryMap.set('All', '');
 
         const categoryName: string = categoryMap.get(value) || '';
-        const searchUrl = categoryName === '' ? `?page=0&size=${booksPerPage}`
+        const searchUrl = categoryName === '' ? `?page=<pageNumber>&size=${booksPerPage}`
             :
-            `/search/findByCategory?category=${categoryName}&page=0&size=${booksPerPage}`
+            `/search/findByCategory?category=${categoryName}&page=<pageNumber>&size=${booksPerPage}`
 
         setSelectedCategory(value);
         setSearchUrl(searchUrl)
