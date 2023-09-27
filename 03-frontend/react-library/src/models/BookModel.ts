@@ -1,4 +1,4 @@
-export class BookModel {
+export default class BookModel {
     id: number;
     title: string;
     author?: string;

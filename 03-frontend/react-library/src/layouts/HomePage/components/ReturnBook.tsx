@@ -1,4 +1,4 @@
-import { BookModel } from "../../../models/BookModel";
+import BookModel from "../../../models/BookModel";
 import React from "react";
 
 export const ReturnBook: React.FC<{ book: BookModel }> = (props) => {

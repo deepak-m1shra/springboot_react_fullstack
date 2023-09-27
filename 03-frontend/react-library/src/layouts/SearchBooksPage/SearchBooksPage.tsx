@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { BookModel } from "../../models/BookModel";
+import BookModel from "../../models/BookModel";
 import { SpinnerLoading } from "../Utils/SpinnerLoading";
 import { SearchBook } from "./components/SearchBook";
 import { Pagination } from "../Utils/Pagination";
@@ -21,7 +21,7 @@ export const SearchBooksPage = () => {
     useEffect(() => {
 
         const fetchBooks = async () => {
-            const baseUrl: string = "http://localhost:8081/api/books";
+            const baseUrl: string = "http://localhost:8080/api/books";
             let url: string = ``;
 
             if (searchUrl === '') {
@@ -141,32 +141,30 @@ export const SearchBooksPage = () => {
                                     {selectedCategory}
                                 </button>
                                 <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                    <li>
-                                        <li onClick={() => categoryField('All')}>
-                                            <a href="#" className="dropdown-item">
-                                                All
-                                            </a>
-                                        </li>
-                                        <li onClick={() => categoryField('Frontend')}>
-                                            <a href="#" className="dropdown-item">
-                                                Frontend
-                                            </a>
-                                        </li>
-                                        <li onClick={() => categoryField('Backend')}>
-                                            <a href="#" className="dropdown-item">
-                                                Backend
-                                            </a>
-                                        </li>
-                                        <li onClick={() => categoryField('Data')}>
-                                            <a href="#" className="dropdown-item">
-                                                Data
-                                            </a>
-                                        </li>
-                                        <li onClick={() => categoryField('DevOps')}>
-                                            <a href="#" className="dropdown-item">
-                                                DevOps
-                                            </a>
-                                        </li>
+                                    <li onClick={() => categoryField('All')}>
+                                        <a href="#" className="dropdown-item">
+                                            All
+                                        </a>
+                                    </li>
+                                    <li onClick={() => categoryField('Frontend')}>
+                                        <a href="#" className="dropdown-item">
+                                            Frontend
+                                        </a>
+                                    </li>
+                                    <li onClick={() => categoryField('Backend')}>
+                                        <a href="#" className="dropdown-item">
+                                            Backend
+                                        </a>
+                                    </li>
+                                    <li onClick={() => categoryField('Data')}>
+                                        <a href="#" className="dropdown-item">
+                                            Data
+                                        </a>
+                                    </li>
+                                    <li onClick={() => categoryField('DevOps')}>
+                                        <a href="#" className="dropdown-item">
+                                            DevOps
+                                        </a>
                                     </li>
                                 </ul>
                             </div>
