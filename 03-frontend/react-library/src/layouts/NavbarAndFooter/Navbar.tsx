@@ -41,9 +41,9 @@ export const Navbar = () => {
                         {
                             !authState.isAuthenticated ?
                             <li className='nav-item m-1'>
-                            <a type='button' className='btn btn-outline-light' href='#'>
+                            <NavLink to='/login' type='button' className='btn btn-outline-light' href='#'>
                                 Sign in
-                            </a>
+                            </NavLink>
                         </li>
                         :
                         <li>
